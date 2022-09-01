@@ -3,6 +3,7 @@ Mobitech bulk sms API guide and code snippets
 
 Send a message to a mobile subscriber using a Sender Name (alphanumeric sender ID):
 
+## Send SMS
 https://api.mobitechtechnologies.com/sms/sendsms
 
 **Request Type**
@@ -20,6 +21,35 @@ https://api.mobitechtechnologies.com/sms/sendsms
 | link_id | String |[Optional] Leave this empty for bulk messages. For shortcode messages, the link_id received on incoming on-demand messages must be included here. |
 | message | String | The message to send to the end user. This can be to a maximum or 920 characters or 6 SMS units. Note that every unit of an SMS is charged. |
 
+**Sample Request Body**
+
+```
+{
+     "mobile": "+254XXXXXXX",
+    "response_type": "json",
+    "sender_name": "23107",
+    "service_id": 0,
+    "message": "This is a message.\n\nRegards\nMobiTech Technologies"
+}
+
+```
+
+**Sample Response Body**
+
+```
+[
+    {
+        "status_code": "1000",
+        "status_desc": "Success",
+        "message_id": 70055777,
+        "mobile_number": "254702739804",
+        "network_id": "1",
+        "message_cost": 0.1,
+        "credit_balance": 5165.7
+    }
+]
+
+```
 ## Response codes
 |Status Id|	Status Code	Status| Description|
 | :---: | :---: | :---: |
@@ -38,3 +68,19 @@ https://api.mobitechtechnologies.com/sms/sendsms
 |13|	1012|	Mobile number in DND|
 |14|	1013|	Invalid API Key|
 |15|	1014|	IP not allowed|
+
+## Get SMS Units
+
+### End point:  https://api.mobitechtechnologies.com/sms/units
+**Request Type:**
+ - GET
+ 
+| h_api_key | String | Your API key. It goes to the header |
+
+### Expected Response
+```
+{
+    "credit_balance": "5165.80",
+    "date": "2022-09-01 22:44:05"
+}
+```
