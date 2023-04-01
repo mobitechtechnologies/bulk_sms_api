@@ -3,7 +3,7 @@ Mobitech bulk sms API guide and code snippets
 
 Send a message to a mobile subscriber using a Sender Name (alphanumeric sender ID):
 
-## Send SMS
+## Send Single SMS
 https://api.mobitechtechnologies.com/sms/sendsms
 
 **Request Type**
@@ -50,6 +50,47 @@ https://api.mobitechtechnologies.com/sms/sendsms
 ]
 
 ```
+## Send Bulk SMS
+https://api.mobitechtechnologies.com/sms/sendbulksms
+
+**Sample Request Body - Bulk SMS**
+- Send one message to multiple phone numbers - separate by ,
+
+```
+ {
+    "mobile":"254721702XXX,254702739XXX",
+    "response_type": "json",
+    "sender_name": "Mobitech",
+    "service_id":0,
+    "message":"Bulk API Test"
+}
+
+```
+**Sample Response  Body**
+
+```
+[
+    {
+        "status_code": "1000",
+        "status_desc": "Success",
+        "message_id": "219586328",
+        "mobile_number": "254721702XXX",
+        "network_id": "1",
+        "message_cost": "0.1",
+        "credit_balance": "106.60000000000001"
+    },
+    {
+        "status_code": "1000",
+        "status_desc": "Success",
+        "message_id": "219586329",
+        "mobile_number": "254702739XXX",
+        "network_id": "1",
+        "message_cost": "0.1",
+        "credit_balance": "106.5"
+    }
+]
+```
+
 ## Response codes
 |Status Id|	Status Code	Status| Description|
 | :---: | :---: | :---: |
